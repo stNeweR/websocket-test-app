@@ -1,0 +1,3 @@
+CREATE DATABASE bot_test;
+
+GRANT ALL PRIVILEGES ON DATABASE bot_test TO postgres;
