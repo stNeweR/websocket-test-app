@@ -22,6 +22,20 @@ services:
     depends_on:
       - db
 
+  reverb:
+    build:
+      context: .
+      dockerfile: _docker/dev/php/Dockerfile
+    volumes:
+      - ./src:/var/www
+    command: php artisan reverb:start --host=0.0.0.0
+    working_dir: /var/www
+    ports:
+      - 8080:8080
+    container_name: bot_reverb
+    depends_on:
+      - app
+
   db:
     image: postgres:16-alpine
     restart: always

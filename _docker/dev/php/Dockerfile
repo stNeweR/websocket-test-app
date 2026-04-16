@@ -12,9 +12,9 @@ RUN apk --update --no-cache add  \
     linux-headers \
     freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_pgsql sockets gd exif\
+    && docker-php-ext-install pdo_pgsql sockets gd exif pcntl \
     && pecl install redis-6.0.2 xdebug\
-    && docker-php-ext-enable redis xdebug gd\
+    && docker-php-ext-enable redis xdebug gd pcntl \
     && apk del $PHPIZE_DEPS
 
 RUN addgroup -g 1000 app && \
